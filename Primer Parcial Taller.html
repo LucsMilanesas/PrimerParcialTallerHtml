@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Instructivo: Cómo hostear un servidor de Minecraft Java</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Introducción</a></li>
+                <li><a href="#aclaraciones">Aclaraciones</a></li>
+                <li><a href="#requisitos">Requisitos</a></li>
+                <li><a href="#pasos">Pasos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="inicio">
+            <h2 id="x1">Introducción</h2>
+            <p>Este instructivo te facilitará la creación de tu propio servidor de Minecraft Java para poder jugar con tus amigos. Sigue estos pasos para comenzar.</p>
+            <img src="minecraft.jpg" alt="Imagen de Minecraft" class="intro-image" id="maincra">
+        </section>
+
+        <section id="aclaraciones">
+            <h2 id="x2">Aclaraciones</h2>
+            <ul>
+                <li>La IP del servidor será dinámica, es decir, cada vez que el servidor vuelva a abrir su IP cambiará.</li>
+                <li>Se hará uso del CMD, utilización de carpetas, instalación de diferentes archivos.</li>
+                <li>Desconozco el funcionamiento de este método en launchers piratas.</li>
+                <li>El instructivo espera que uses el sistema operativo Windows 10 o superior.</li>
+                <li>La finalidad de este instructivo es que evites la manipulación de tu router para abrir los puertos únicamente necesarios.</li>
+            </ul>
+        </section>
+
+        <section id="requisitos">
+            <h2 id="x3">Requisitos</h2>
+            <ul>
+                <li>Conexión a internet, obviamente.</li>
+                <li>JDK última versión de Java.</li>
+                <li>Archivo del servidor "server.jar". Este puede encontrarse en la página oficial de Minecraft.</li>
+                <li>Programa "ngrok". Este nos permitirá abrir los puertos del router sin tanto quilombo.</li>
+                <li>PC con 16 o 8 de memoria RAM ya que habrá que hostear el servidor.</li>
+            </ul>
+        </section>
+
+        <section id="pasos">
+            <h2 id="x4">Pasos para Crear el Servidor</h2>
+            <ol>
+                <li>
+                    <strong>Descargar los Archivos:</strong>
+                    <ul>
+                        <li>Visita el sitio oficial de Minecraft. Descarga el archivo del servidor de la sección "Descargar servidor de Minecraft: Java Edition".</li>
+                        <li>Visita el sitio oficial de Oracle y descarga la última versión del JDK Java Development Kit. Recuerda instalarlo. El error más común del server es no tener la última versión instalada.</li>
+                        <li>Visita el sitio oficial de Ngrok y descarga la última versión del mismo.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Crear una carpeta para el servidor:</strong>
+                    <ul>
+                        <li>En tu computadora, crea una nueva carpeta donde desees almacenar los archivos del servidor.</li>
+                        <li>Mueve el archivo "server.jar" y el "ngrok.exe" descargado a esta nueva carpeta.</li>
+                        <li>El archivo de Java puedes descartarlo ya que solo nos servía para instalar el JDK.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Ejecutar el servidor por primera vez:</strong>
+                    <ul>
+                        <li>Descomprime el archivo "server.jar" y también ejecútalo. Así nos aseguraremos de tener todos los archivos.</li>
+                        <li>Dentro debería haber un archivo de texto llamado EULA, ábrelo y si está escrito eula=false, cámbialo a eula=true, guárdalo y cierra el archivo.</li>
+                        <li>Abre una terminal o símbolo del sistema. Para esto en el buscador de Windows escribiremos "CMD".</li>
+                        <li>Si es tu primera vez abriendo el CMD no te preocupes, yo te explicaré. En este pequeño cuadro oscuro podremos ingresar diferentes comandos que facilitarán las cosas, pero recuerda que cualquier cosa que pase por aquí está moviendo los archivos del PC directamente y es peligroso si no se lo usa con cuidado.</li>
+                        <li>Necesitamos navegar hasta la carpeta donde tienes los archivos del server. Entonces, en la carpeta del server puedes presionar "ALT + d" y copiar la ubicación de la carpeta.</li>
+                        <li>Cuando lo tengas copiado escribe el comando cd y luego pegas la ubicación, debería quedar más o menos así: cd c:/equipo/escritorio/server maincra</li>
+                        <li>El comando que usamos sirve para pararnos en esa carpeta.</li>
+                        <li>Ejecuta el siguiente comando: <code>java -Xmx3G -Xms3G -jar server.jar --bonusChest nogui</code></li>
+                        <li>Este comando iniciará el servidor, deberían mostrarse largos mensajes de textos, si imprime error, puede ser que no se haya instalado la versión de Java correcta.</li>
+                        <li>Si quieres que el mundo se genere sin un cofre bonus puedes eliminar esta parte --bonusChest nogui.</li>
+                        <li>Si logró iniciarse, felicidades creaste un servidor local donde se pueden unir amigos que estén con el mismo internet.</li>
+                        <li>Puedes usar el comando en la terminal para obtener la IP y dársela a tus amigos <code>ifconfig</code>.</li>
+                        <li>El comando debería imprimir varios valores, el que necesitamos es el IPv4 o similar.</li>
+                        <li>Si eres el host del server, cuando inicies Minecraft Java y coloques la IP para el servidor también puedes escribir localhost y debería entrar al servidor creado.</li> 
+                    </ul>
+                </li>
+                <li>
+                    <strong>Configurar el servidor:</strong>
+                    <ul>
+                        <li>Abre el archivo <code>server.properties</code> o simplemente "server" en un editor de texto.</li>
+                        <li>Ajusta las configuraciones según tus preferencias. Algunas configuraciones comunes incluyen:</li>
+                        <ul>
+                            <li><code>motd=Mensaje de bienvenida</code> - Cambia el mensaje de bienvenida que verán los jugadores al unirse.</li>
+                            <li><code>max-players=Número</code> - Define el número máximo de jugadores que pueden unirse al servidor.</li>
+                            <li><code>level-name=Nombre del mundo</code> - Cambia el nombre del mundo.</li>
+                            <li><code>difficulty=hard</code> - Dificultad del juego.</li> 
+                        </ul>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Abrir el server con amigos externos:</strong>
+                    <ul>
+                        <li>Para esto usaremos ngrok que nos dará una IP dinámica para que los amigos que no estén con nosotros se unan.</li>
+                        <li>Ejecuta ngrok que está dentro de la carpeta del server. Abrirá una nueva terminal de ngrok.</li>
+                        <li>El primer comando que debes escribir es: <code>ngrok config add-authtoken 2el1NVC0I4LPDE4DQ8bqEFjCwOV_4HJoMYSGGSGa86ND8jw6S</code>, esto solo es la primera vez que lo usemos.</li>
+                        <li>Ahora para que ngrok nos genere una IP ingrese este comando: <code>ngrok tcp 25565</code>, es el puerto del router que comúnmente se usa para hostear servers de Minecraft por defecto.</li>
+                        <li>Listo, ngrok debería imprimir una nueva IP dinámica cada vez que abras el servidor para tus amigos.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Último paso, disfrutar.</strong>
+                    <ul>
+                        <li>No olvides que mientras esté abierto el server no cierres el CMD ni la terminal de ngrok o el server cerrará.</li>
+                        <li>Recuerda cerrar el servidor cuando terminen de jugar con el comando <code>stop</code>.</li>
+                        <li>Si no lo cierras de todos modos hay un autoguardado, pero no se guardará en el momento que apagues las terminales.</li>
+                        <li>Disfrutar.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mi Página. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
