@@ -24,6 +24,15 @@ header h1 {
     margin-bottom: 10px;
 }
 
+header small {
+    font-size: 12px;
+    color: #7c7b7b;
+}
+
+header small:hover {
+    color: #1c8be0;
+}
+
 nav ul {
     list-style: none;
     display: flex;
